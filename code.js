@@ -46,45 +46,6 @@ function playRound(playerSelection, computerSelection) {
     else return `You loose! ${computerSelection} beats ${playerSelection}`
 }
 
-//Play a 5 rounds game
-function game() {
-    //Create two counters to keep score
-    let playerCounter = 0;
-    let pcCounter = 0; 
-
-    //Play 5 round game (untill one reach 5 points)
-    for (let i = 0; playerCounter < 5 && pcCounter < 5; i++) {
-
-        //Declare the result of each round
-        let result = playRound(prompt('Rock, Paper or Scissors').toLowerCase(), getComputerChoice());
-
-        //Print the result
-        console.log(result)
-
-        //Add point to the winner of the round
-        if (result.includes('tie')) {
-            console.log('No one get points')
-        } else if (result.includes('win')) {
-            playerCounter++
-            console.log('You have earned 1 point')
-        } else {
-            pcCounter++
-            console.log('PC have earned 1 point')
-        }
-
-        //Print the status of the game
-        console.log(`Player's points: ${playerCounter}\nPC's points: ${pcCounter}`)
-    }
-
-    //Compare the points and return the result
-    if (playerCounter === pcCounter) {
-        return 'Final result: Tie'
-    } else if (playerCounter > pcCounter) {
-        return 'Final result: You win'
-    } else {
-        return 'Final result: You loose'
-    }
-}
 
 
 console.log(game())
