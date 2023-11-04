@@ -46,3 +46,12 @@ function playRound(playerSelection, computerSelection) {
     else return `You loose! ${computerSelection} beats ${playerSelection}`
 }
 
+const choices = document.querySelectorAll('.selection');
+
+choices.forEach((choice) => {
+    choice.addEventListener('click', ()=>{
+        const playerSelection = choice.textContent.toLowerCase();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    })
+})
