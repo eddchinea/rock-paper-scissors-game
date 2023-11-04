@@ -46,6 +46,3 @@ function playRound(playerSelection, computerSelection) {
     else return `You loose! ${computerSelection} beats ${playerSelection}`
 }
 
-
-
-console.log(game())
