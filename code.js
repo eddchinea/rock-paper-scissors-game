@@ -47,11 +47,44 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const choices = document.querySelectorAll('.selection');
+const scores = document.querySelector('.scores'); 
+
+const round = document.createElement('p');
+scores.appendChild(round);
+
+const scoreTable = document.createElement('p');
+scores.appendChild(scoreTable);
+
+const result = document.createElement('p');
+scores.appendChild(result);
+
+let playerCounter = 0;
+let aiCounter = 0;
 
 choices.forEach((choice) => {
+
+
+
     choice.addEventListener('click', ()=>{
         const playerSelection = choice.textContent.toLowerCase();
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+
+        round.textContent = playRound(playerSelection, computerSelection);
+        if (round.textContent.includes('win')) playerCounter++
+        else if(round.textContent.includes('loose')) aiCounter++
+
+        scoreTable.textContent = `Your points: ${playerCounter} \| AI points: ${aiCounter}`
+
+        if (playerCounter == 5|| aiCounter == 5) {
+            const winner = playerCounter > aiCounter ? 'You' : 'AI'
+
+            result.textContent = `Game over! ${winner} wins!`;
+
+            playerCounter = 0;
+            aiCounter = 0;
+        } else result.textContent = ''
     })
+
+
 })
+
